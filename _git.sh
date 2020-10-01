@@ -358,5 +358,112 @@ git checkout ID_GOES_HERE file1.txt
 
 
 # ------------------------------------------------------------------------------
-# Blame - 
+# Blame - find who it was who wrote a line of code
 # ------------------------------------------------------------------------------
+
+# Show the email of each user that has committed to this particular file
+git blame -e file1.txt
+
+
+# Show only the first 3 lines of the blame file with email
+git blame audience.txt -e -L 1,3
+
+
+
+
+# ------------------------------------------------------------------------------
+# Add tag - ideal for versioning etc
+# ------------------------------------------------------------------------------
+
+# This is to add to the most recent commit
+git tag v1.0
+
+# This is to add to a previous commit
+git tag v1.0 ID_GOES_HERE
+
+# List all tags
+git tag
+
+# Supply an annotated tag
+git tag -a v1.1 -m "My version 1.1"
+
+# show all tags with their names
+git tag -n
+
+# show all details of the tag
+git show v1.1
+
+# Delete tag
+git tag -d v1.1
+
+
+
+
+
+
+# ------------------------------------------------------------------------------
+# Branches
+# ------------------------------------------------------------------------------
+
+
+# create branch
+git branch branch_name
+
+# This is the new way to switch branch
+git switch branch_name
+
+# Rename a branch
+git branch -m bugfix bugfix/signup-form
+
+# view commits across all branches
+git log --all
+
+# Delete a branch after finished with it
+git branch -d branch_name
+
+# Force deletion with capital D
+git branch -D branch_name
+
+# compare the commits between the two
+git log master..bugfix/signup-form
+
+# compare the differences in files between the two
+git diff master..bugfix/signup-form
+
+# Compare to whatever branch you're currently working on
+git diff bugfix/signup-form
+
+
+
+
+
+
+# ------------------------------------------------------------------------------
+# Branches - stash changes
+# ------------------------------------------------------------------------------
+
+# This is for saving things without committing them - if need to switch
+# branch for instance!
+
+# Create a stash
+git stash push -m "Filename"
+
+
+# Create another stash
+git stash push -a -m "Filename"
+
+
+# view stashes
+git stash list
+
+# Show the first stash
+git stash show 1
+
+# Apply the first stash to the branch
+git stash apply 1
+
+# when committed remove stash
+git stash drop 1
+
+# This will remove all stashes 
+git stash clear
