@@ -1,0 +1,81 @@
+git config --list
+git help
+git help config
+git status
+git log
+git add *
+git commit -m ""
+git pull origin master 			should pull before push to get latest changes
+git push origin master
+git clone
+git branch -a 							list all online
+git branch -v 							list all on machine
+git diff 										show changes
+git branch __name__					create branch
+git checkout __name__				checkout the branch
+
+
+
+git push -u origin __name__ associates the branch to git pull / git push
+git branch --merged				  shows which branches have been merged
+git merge __name__ 					merge whatever branch to current branch you're in
+
+git branch -d __name__			delete branch locally
+git push -d __name__ 				delete branch on remote
+
+
+git commands
+
+git add *				staging
+git add .				staging
+
+git add --all				handles all moving into staging etc..
+
+git status 				shows which ones are committed
+
+git commit -m "hello"			commit statement
+
+git reset HEAD 				puts it back to previous state
+
+.gitignore 				file that you add file names to exclude
+
+					.DS_Store
+					node_modules
+
+
+
+git log 				shows all the previous commits
+
+git checkout hex			hexadecimal from log can be called to go back
+
+git checkout 'branch-name'		checkout a branch
+
+git branch 				list the branches
+					treat branches as checkpoints
+
+git merge 'branch-name'			need to be in the branch you want the updates in
+
+git branch -m app01 app1		changes the name of the branch to app1
+
+git branch -D alternate			delete the branch
+
+git branch -a 				display all of the branches
+
+git branch -b "branch-name'		pull a single branch other than master
+
+git clone -b 'branch-name' webadd	pulls only the branch - no master
+
+Create folder name (same)		pull every branch
+Change to that directory
+Git clone --mirror " " .git
+Git config --bool core.bare false
+Git reset --hard
+
+
+rm -dfr .git 				delete the folder (DANGEROUS)
+
+
+
+If you need to associate an existing branch with online
+
+git remote add origin git@github.com:barbourabi/mp.git
