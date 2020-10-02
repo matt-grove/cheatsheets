@@ -50,6 +50,11 @@ git config --global alias.unstage "restore --staged ."
 # %Cgreen = change color to green
 # %Creset = reset color
 
+# Prevent all fastforward merges - It prevents linear history
+# wiil always be a 3 way merge
+git config --global ff no
+
+
 
 
 
@@ -445,6 +450,8 @@ git diff bugfix/signup-form
 # This is for saving things without committing them - if need to switch
 # branch for instance!
 
+# Should delete branches as you go through a project - only cause confusion if left
+
 # Create a stash
 git stash push -m "Filename"
 
@@ -465,5 +472,49 @@ git stash apply 1
 # when committed remove stash
 git stash drop 1
 
-# This will remove all stashes 
 git stash clear
+
+
+
+
+# ------------------------------------------------------------------------------
+# Merges
+# ------------------------------------------------------------------------------
+
+
+# fastforward branch
+# this is just a simple merge - direct update to latest branch
+
+# 3 way merges
+# if the branches have diverged then it will do this one
+
+# this will give a better representation of branches
+git log --oneline --all --graph
+
+# Create a new branch and switch to it
+git switch -C branch_name
+
+# prevent fastforward commit
+git merge --no-ff branch_name
+
+# View all merges on the current branch (usually master)
+git branch --merged
+
+
+# View those which haven't been merged into current branch
+git branch --no-merged
+
+
+
+# ------------------------------------------------------------------------------
+# Merge Conficts
+# ------------------------------------------------------------------------------
+
+# Could be:
+# two changes on same code
+# change on file, deletion of same file
+# same addition of file in both
+
+
+# Open the files in Atom and it will show you the conflicts! - perfect for what you need
+# Can use the buttons, or can actually edit the words themselves
