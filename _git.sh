@@ -482,6 +482,19 @@ git stash clear
 # ------------------------------------------------------------------------------
 
 
+
+# Could be:
+# two changes on same code
+# change on file, deletion of same file
+# same addition of file in both
+
+
+# Open the files in Atom and it will show you the conflicts! - perfect for what you need
+# Can use the buttons, or can actually edit the words themselves
+
+
+# Mainly two types:
+
 # fastforward branch
 # this is just a simple merge - direct update to latest branch
 
@@ -504,17 +517,79 @@ git branch --merged
 # View those which haven't been merged into current branch
 git branch --no-merged
 
+# If midway - need to go back to before we started the merge
+git merge --abort
+
+
+
+# Remove a merge entirely - reset to before diverge
+git reset --hard HEAD~1
+8035002
+
+
+# To go forwards to the x commit after removing a merge
+git reset --hard COMMIT_ID_HERE
+
+
+# Go back to the latest commit on the master branch, but push to new commit
+git revert -m 1 HEAD
+
+
+
+
+
+
+
 
 
 # ------------------------------------------------------------------------------
-# Merge Conficts
+# Squash Merge
 # ------------------------------------------------------------------------------
 
-# Could be:
-# two changes on same code
-# change on file, deletion of same file
-# same addition of file in both
+ # represent all of the changes in the bugfix branch, but in one
+ # single commit - it cleans things up a little, save convoluting the history
+
+# change to Master branch and to merge with a squash:
+# Very similar to fastforward merge, just add squash
+git merge --squash bugfix/photo-upload
+
+# This does not show up as merged, as it is not a merge! it's only seen in linear history
 
 
-# Open the files in Atom and it will show you the conflicts! - perfect for what you need
-# Can use the buttons, or can actually edit the words themselves
+
+
+
+# ------------------------------------------------------------------------------
+# Rebasing
+# ------------------------------------------------------------------------------
+
+
+# careful as this rewrites history
+# Only on local repo
+
+# if master conflicts (due to an update) on it whilst in branch
+# Then have two options - 3 way merge, or rebasing
+
+# rebasing will allow for the point it came from to be moved to the latest
+# commit of master
+
+
+# Rebase on feature/shopping-cart branch
+git rebase master
+
+
+# if conflict need to launch tools - (just open the file in atom )
+atom toc.txt
+
+
+# once resolved you have 3 options:
+
+# run continue
+git rebase --continue
+
+
+# run skip - this disregards the edits - skips!
+git rebase --skip
+
+# run abort - get rid of changes
+git rebase --abort
